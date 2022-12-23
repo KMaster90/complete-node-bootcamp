@@ -47,43 +47,41 @@ const slugs = dataObj.map(el => slugify(el.productName, { lower: true }));
 console.log(slugs);
 
 const server = http.createServer((req, res) => {
-        console.log(req.url);
-        const {pathname, query} = url.parse(req.url, true);
-        // Overview page
-        if (pathname === '/' || pathname === '/overview') {
-            const cardsHtml = dataObj.map(el => replaceTemplate(tempCard, el)).join('');
-            const output = tempOverview.replace('{%PRODUCT_CARDS%}', cardsHtml);
-            res
-                .writeHead(200, {'Content-type': 'text/html'})
-                .end(output);
-        }
-        // Product page
-        else if (pathname === '/product') {
-            const product = dataObj[query.id];
-            const output = replaceTemplate(tempProduct, product);
-            res
-                .writeHead(200, {'Content-type': 'text/html'})
-                .end(output);
-        }
-        // API
-        else if (pathname === '/api') {
-            res
-                .writeHead(200, {'Content-type': 'application/json'})
-                .end(data);
-        }
-        // Not found
-        else {
-            res
-                .writeHead(404, {
-                    'Content-type': 'text/html',
-                    'my-own-header': 'hello-world'
-                })
-                .end('<h1>Page not found!</h1>');
-        }
-    })
-;
+  console.log(req.url);
+  const { pathname, query } = url.parse(req.url, true);
+  // Overview page
+  if (pathname === '/' || pathname === '/overview') {
+    const cardsHtml = dataObj.map(el => replaceTemplate(tempCard, el)).join('');
+    const output = tempOverview.replace('{%PRODUCT_CARDS%}', cardsHtml);
+    res
+      .writeHead(200, { 'Content-type': 'text/html' })
+      .end(output);
+  }
+  // Product page
+  else if (pathname === '/product') {
+    const product = dataObj[query.id];
+    const output = replaceTemplate(tempProduct, product);
+    res
+      .writeHead(200, { 'Content-type': 'text/html' })
+      .end(output);
+  }
+  // API
+  else if (pathname === '/api') {
+    res
+      .writeHead(200, { 'Content-type': 'application/json' })
+      .end(data);
+  }
+  // Not found
+  else {
+    res
+      .writeHead(404, {
+        'Content-type': 'text/html', 'my-own-header': 'hello-world'
+      })
+      .end('<h1>Page not found!</h1>');
+  }
+});
 
 server.listen(8000, '127.0.0.1', () => {
-    console.log('Listening to requests on port 8000');
+  console.log('Listening to requests on port 8000');
 });
 
