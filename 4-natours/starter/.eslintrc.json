@@ -14,6 +14,11 @@
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "prefer-destructuring": ["error", { "object": true, "array": false }],
-    "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val" }]
+    "no-unused-vars": ["error", { "argsIgnorePattern": "req|res|next|val|err" }],
+    "no-use-before-define": ["error", { "functions": false, "classes": true }],
+    "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
+    "no-await-in-loop": "off"
   }
 }
