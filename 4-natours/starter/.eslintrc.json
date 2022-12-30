@@ -19,6 +19,9 @@
     "no-shadow": ["error", { "allow": ["req", "res", "err"] }],
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "no-restricted-syntax": ["error", "LabeledStatement", "WithStatement"],
-    "no-await-in-loop": "off"
+    "no-await-in-loop": "off",
+    "no-useless-return": "off",
+    "no-continue": "off",
+    "no-mixed-spaces-and-tabs": "off"
   }
 }
